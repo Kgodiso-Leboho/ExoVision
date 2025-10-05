@@ -1,6 +1,5 @@
 # ExoVision — AI-Powered Exoplanet Identification App
 
-![ExoVision Banner](./assets/banner.png)
 *Exploring distant worlds through data, AI, and curiosity.*
 
 ---
@@ -44,8 +43,6 @@ Visualization: Plotly, Matplotlib
 Version Control: Git, GitHub
 
 ---
-
-![Habitability Report](./assets/habitability.png)
 
 ---
 
