@@ -2,7 +2,7 @@
 
 *Exploring distant worlds through data, AI, and curiosity.*
 
----
+
 
 ## Overview
 
@@ -11,7 +11,7 @@ It analyzes data such as light curves, distance from the host star, and surface 
 
 Built with React for the frontend and Python for the backend, ExoVision bridges artificial intelligence and astrophysics to make the search for new worlds faster, smarter, and more accessible.
 
----
+
 
 ## Key Features
 
@@ -21,7 +21,7 @@ Built with React for the frontend and Python for the backend, ExoVision bridges 
 - Dataset upload and scanning for CSV or telescope-based data.  
 - Responsive web interface developed with React for seamless user interaction.
 
----
+
 
 ## How It Works
 
@@ -31,7 +31,7 @@ Built with React for the frontend and Python for the backend, ExoVision bridges 
 4. **Visualization** – The results are displayed with graphs and metrics.  
 5. **Habitability Assessment** – The app estimates whether detected planets could support life.
 
----
+
 
 ## Tech Stack
 
@@ -42,9 +42,9 @@ Data Processing: Pandas, NumPy
 Visualization: Plotly, Matplotlib  
 Version Control: Git, GitHub
 
----
 
----
+
+
 
 ## Installation and Setup
 
