@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
   overflow: hidden;
 }
 
@@ -20,7 +20,7 @@
 @keyframes twinkle {
   0%,
   100% {
-    opacity: 0.1;
+    opacity: 0.28;
     transform: scale(1);
   }
   50% {

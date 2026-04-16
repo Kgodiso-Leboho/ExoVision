@@ -76,7 +76,7 @@
 
 .model-tab {
   background: rgba(255, 255, 255, 0.03);
-  border: none; 
+  border: 1px solid rgba(148, 163, 184, 0.15); 
   color: rgba(226, 232, 240, 0.8);
 
   padding: 0.75rem 1.25rem;
@@ -249,14 +249,6 @@
   border-color: rgba(56, 189, 248, 0.4);
 }
 
-.feature-card.benefit {
-  border-left: 3px solid #10b981;
-}
-
-.feature-card.limitation {
-  border-left: 3px solid #f59e0b;
-}
-
 .feature-icon {
   font-size: 0.9rem;
   margin-top: 0.2rem;
@@ -325,7 +317,7 @@
   border-radius: 16px;
 
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(148, 163, 184, 0.15);
+  border: none;
 }
 
 .stats-grid {

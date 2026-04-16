@@ -8,7 +8,7 @@ const WelcomePage = () => {
 
   return (
     <div className="welcome-app">
-      <Stars id="welcome-stars" />
+      <Stars />
 
       <div className="welcome-container">
 

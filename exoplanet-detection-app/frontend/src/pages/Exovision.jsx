@@ -212,7 +212,7 @@ const ExoVision = () => {
   return (
     <div className="exovision-app">
       {/* Animated stars background */}
-      <Stars id="welcome-stars" starCount={200} />
+      <Stars />
 
       <div className="exovision-container">
 

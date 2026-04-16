@@ -66,7 +66,7 @@ const DatasetPage = () => {
 
   return (
     <div className="mission-control">
-      <Stars starCount={120} />
+      <Stars />
       <Navbar />
 
       {/* HEADER */}

@@ -9,6 +9,7 @@
   font-family: "Inter", sans-serif;
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 
 /* subtle grid overlay */
