@@ -1,0 +1,389 @@
+/* =========================
+   GLOBAL BACKGROUND
+========================= */
+
+.model-info-page {
+  min-height: 100vh;
+  padding-top: 80px;
+  background:
+    radial-gradient(circle at top, #0b1220 0%, #050816 40%, #03050f 100%);
+  color: #e5e7eb;
+  overflow-x: hidden;
+}
+
+/* Subtle grid overlay (modern NASA feel) */
+.model-info-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.model-info-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.model-info-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.model-info-header h1 {
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+
+  background: linear-gradient(90deg, #38bdf8, #6366f1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.model-info-header p {
+  font-size: 1.05rem;
+  color: rgba(226, 232, 240, 0.7);
+  margin-top: 0.5rem;
+}
+
+/* =========================
+   MODEL TABS (MODERN PILL SYSTEM)
+========================= */
+
+.model-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.model-tab {
+  background: rgba(255, 255, 255, 0.03);
+  border: none; 
+  color: rgba(226, 232, 240, 0.8);
+
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.model-tab:hover {
+  border-color: rgba(56, 189, 248, 0.6);
+  transform: translateY(-2px);
+  color: white;
+}
+
+.model-tab.active {
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  border-color: transparent;
+  color: white;
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+}
+
+/* =========================
+   MAIN CARD CONTAINER
+========================= */
+
+.model-content {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 16px;
+
+  padding: 2rem;
+  backdrop-filter: blur(14px);
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================
+   MODEL HEADER SECTION (MODERN KPI LAYOUT)
+========================= */
+
+.model-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.model-title-section h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.model-tagline {
+  color: rgba(148, 163, 184, 0.8);
+  font-style: normal;
+  font-size: 1rem;
+}
+
+/* KPI STATS (NASA TELEMETRY STYLE) */
+
+.model-stats {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.model-stat {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+
+  text-align: center;
+  min-width: 110px;
+
+  transition: transform 0.2s ease;
+}
+
+.model-stat:hover {
+  transform: translateY(-3px);
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(148, 163, 184, 0.7);
+}
+
+.stat-value {
+  display: block;
+  margin-top: 0.25rem;
+
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+/* =========================
+   SECTIONS (CLEAN SCIENTIFIC BLOCKS)
+========================= */
+
+.info-section {
+  margin-bottom: 2.5rem;
+}
+
+.info-section h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+
+  color: #c7d2fe;
+
+  border-left: 3px solid #38bdf8;
+  padding-left: 0.75rem;
+
+  margin-bottom: 1rem;
+}
+
+.info-section p {
+  color: rgba(226, 232, 240, 0.85);
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+/* highlight strong text */
+.info-section strong {
+  color: #38bdf8;
+}
+
+/* =========================
+   FEATURES GRID (BENEFITS + LIMITATIONS)
+========================= */
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.75rem;
+}
+
+.feature-card {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem;  
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.02);
+  border: none;
+
+  transition: all 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.feature-card.benefit {
+  border-left: 3px solid #10b981;
+}
+
+.feature-card.limitation {
+  border-left: 3px solid #f59e0b;
+}
+
+.feature-icon {
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+.feature-card span {
+  color: rgba(226, 232, 240, 0.85);
+  line-height: 2;
+}
+
+/* =========================
+   APPLICATIONS GRID (CLEAN DASHBOARD CARDS)
+========================= */
+
+.applications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.application-card {
+  position: relative;
+
+  padding: 1.25rem;
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.02);
+  border: none;
+
+  transition: all 0.2s ease;
+}
+
+.application-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(99, 102, 241, 0.6);
+}
+
+.app-number {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+
+  width: 28px;
+  height: 28px;
+
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: white;
+}
+
+/* =========================
+   LIVE STATS PANEL
+========================= */
+
+.current-model-stats {
+  margin-top: 2rem;
+  padding: 2rem;
+
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.stat-card {
+  padding: 1.25rem;
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.02);
+  border: none;
+
+  text-align: center;
+}
+
+.stat-card h4 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.7);
+  margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #38bdf8;
+}
+
+/* accuracy highlight */
+.stat-card .accuracy {
+  color: #10b981;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: rgba(148, 163, 184, 0.8);
+  font-size: 1.1rem;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 768px) {
+  .model-header {
+    flex-direction: column;
+  }
+
+  .model-stats {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

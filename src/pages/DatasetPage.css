@@ -1,0 +1,271 @@
+/* =========================
+   GLOBAL MISSION CONTROL
+========================= */
+
+.mission-control {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #050814, #02030a 60%, #000);
+  color: #e6f1ff;
+  font-family: "Inter", sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle grid overlay */
+.mission-control::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.mc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+}
+
+.mc-header h1 {
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #7dd3fc;
+}
+
+/* STATUS BADGE */
+.status-badge {
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+}
+
+.status-badge.ready {
+  color: #38bdf8;
+  border-color: #38bdf8;
+}
+
+.status-badge.running {
+  color: #facc15;
+  border-color: #facc15;
+  animation: pulse 1s infinite;
+}
+
+.status-badge.complete {
+  color: #22c55e;
+  border-color: #22c55e;
+}
+
+/* =========================
+   GRID LAYOUT
+========================= */
+
+.mc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 20px;
+  padding: 20px 40px;
+  height: calc(100vh - 140px);
+}
+
+/* =========================
+   PANELS (GLASS HUD)
+========================= */
+
+.panel {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 20px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.panel h2 {
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #93c5fd;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 10px;
+}
+
+/* =========================
+   COMMAND PANEL
+========================= */
+
+.command-panel input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  border-radius: 8px;
+}
+
+.file-name {
+  font-size: 12px;
+  color: #60a5fa;
+  margin-top: 5px;
+}
+
+.mission-btn {
+  margin-top: 10px;
+  padding: 12px;
+  background: linear-gradient(90deg, #0ea5e9, #22d3ee);
+  border: none;
+  color: black;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.mission-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+}
+
+.quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.action {
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+  color: #94a3b8;
+}
+
+.action:hover {
+  background: rgba(56, 189, 248, 0.1);
+  color: white;
+}
+
+/* =========================
+   TELEMETRY PANEL
+========================= */
+
+.telemetry-panel {
+  overflow-y: auto;
+}
+
+.telemetry-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: monospace;
+  font-size: 12px;
+  color: #a5f3fc;
+}
+
+.log-line {
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 2px solid #22d3ee;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.idle {
+  color: rgba(255,255,255,0.4);
+  font-size: 13px;
+}
+
+/* =========================
+   RESULTS PANEL
+========================= */
+
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.metric {
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.metric span {
+  font-size: 10px;
+  color: #94a3b8;
+}
+
+.metric b {
+  display: block;
+  font-size: 14px;
+  color: white;
+}
+
+.metric.highlight {
+  border: 1px solid #22d3ee;
+  background: rgba(34, 211, 238, 0.08);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.mc-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 40px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .mc-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .mc-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
