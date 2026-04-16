@@ -1,393 +1,280 @@
-/* ==============================
-   🌌 ExoVision Welcome Page CSS
-   Cinematic Planet Collision + Dissolve Transition
-   ============================== */
+/* =========================
+   CLEAN MODERN LANDING UI
+========================= */
 
 .welcome-app {
   min-height: 100vh;
-  min-height: 100dvh; /* Dynamic viewport height for mobile */
-  width: 100%;
-  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: radial-gradient(circle at top, #0b1020, #000);
   color: white;
+  font-family: Inter, sans-serif;
   overflow: hidden;
-  font-family: 'Poppins', sans-serif;
-  position: relative;
 }
 
-#welcome-stars {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* ==============================
-   🌠 Container Layout
-   ============================== */
 .welcome-container {
-  text-align: center;
-  max-width: 900px;
-  padding: 2rem;
-  position: relative;
-  z-index: 2;
+  max-width: 1200px;
+  margin: auto;
+  padding: 6rem 2rem;
 }
 
-.welcome-header {
-  margin-bottom: 2rem;
+/* HERO */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  min-height: 80vh;
 }
 
-.welcome-title {
-  font-size: clamp(2.5rem, 8vw, 4rem); /* Responsive font size */
+.hero-title {
+  font-size: 3rem;
   font-weight: 700;
-  letter-spacing: 2px;
-  background: linear-gradient(90deg, #4cc9f0, #f72585, #7209b7);
+  line-height: 1.1;
+}
+
+.hero-title span {
+  background: linear-gradient(90deg, #4cc9f0, #7209b7);
   -webkit-background-clip: text;
-  background-clip: text;
   color: transparent;
-  animation: titleFloat 4s ease-in-out infinite;
-  margin: 0;
-  line-height: 1.2;
 }
 
-@keyframes titleFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-.welcome-subtitle {
-  font-size: clamp(1rem, 3vw, 1.2rem);
-  color: #cdd6f4;
+.hero-subtitle {
   margin-top: 1rem;
-  opacity: 0.9;
-  line-height: 1.4;
+  color: #b8c1ec;
+  max-width: 500px;
+  line-height: 1.6;
 }
 
-/* ==============================
-   🪐 PLANETS + COLLISION
-   ============================== */
-.collision-scene {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-  height: 260px;
-  margin: 3rem auto 2rem;
-  perspective: 800px;
+/* BUTTONS */
+.hero-actions {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
 }
 
-.planet {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: transform 2s ease-in-out;
-  box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
-  will-change: transform; /* Performance optimization */
-}
-
-.planet-left {
-  left: 0;
-  background: radial-gradient(circle at 30% 30%, #4cc9f0, #4361ee, #3a0ca3);
-}
-
-.planet-right {
-  right: 0;
-  background: radial-gradient(circle at 30% 30%, #f72585, #b5179e, #7209b7);
-}
-
-/* FIXED: Changed from .collide to match JS class names */
-.move-right.planet-left {
-  transform: translate(145px, -50%) scale(1.1);
-}
-
-.move-left.planet-right {
-  transform: translate(-145px, -50%) scale(1.1);
-}
-
-/* ==============================
-   💥 BIG BANG EFFECT
-   ============================== */
-.big-bang {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #fff, #ffcc00, #ff007f, transparent);
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0;
-  z-index: 5;
-  animation: bangFlash 1.2s ease-out forwards;
-  box-shadow: 0 0 80px 50px rgba(255, 255, 255, 0.5);
-  pointer-events: none;
-}
-
-@keyframes bangFlash {
-  0% {
-    opacity: 0.6;
-    transform: translate(-50%, -50%) scale(0.5);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(3);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(8);
-  }
-}
-
-/* ==============================
-   ✨ PARTICLE EXPLOSION
-   ============================== */
-.particle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border-radius: 50%;
-  opacity: 0.9;
-  animation: particleFly 1.5s ease-out forwards;
-  pointer-events: none;
-  will-change: transform, opacity; /* Performance optimization */
-}
-
-@keyframes particleFly {
-  0% {
-    transform: translate(-50%, -50%) scale(0.3);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(
-      calc(-50% + var(--particle-x, 0px)), 
-      calc(-50% + var(--particle-y, 0px))
-    ) scale(0.1);
-    opacity: 0;
-  }
-}
-
-/* ==============================
-   🌈 TEXT DISSOLVE EFFECT
-   ============================== */
-.dissolve-text {
-  animation: dissolve 1.2s ease-out forwards;
-  will-change: opacity, filter, letter-spacing;
-}
-
-@keyframes dissolve {
-  0% {
-    opacity: 1;
-    filter: blur(0);
-    letter-spacing: normal;
-  }
-  50% {
-    opacity: 0.5;
-    filter: blur(6px);
-    letter-spacing: 3px;
-  }
-  100% {
-    opacity: 0;
-    filter: blur(12px);
-    letter-spacing: 6px;
-  }
-}
-
-/* ==============================
-   🆕 NEW: Formed Text Styles (After Explosion)
-   ============================== */
-.formed-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: clamp(2rem, 6vw, 3rem);
-  font-weight: 700;
-  background: linear-gradient(90deg, #4cc9f0, #f72585);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  opacity: 0;
-  animation: textReveal 1.5s ease-out 0.5s forwards;
-  z-index: 6;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-}
-
-@keyframes textReveal {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.5);
-    filter: blur(10px);
-  }
-  70% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.1);
-    filter: blur(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    filter: blur(0);
-  }
-}
-
-/* ==============================
-   🧭 Text + Button Styling
-   ============================== */
-.welcome-description {
-  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-  line-height: 1.7;
-  color: #d0d0d0;
-  margin: 1.5rem auto 2.5rem;
-  max-width: 700px;
-  opacity: 0.9;
-}
-
-.cta-button {
-  padding: 1rem 3rem;
+.primary-btn {
+  padding: 0.9rem 1.5rem;
+  background: linear-gradient(135deg, #4cc9f0, #7209b7);
   border: none;
-  border-radius: 50px;
-  background: linear-gradient(45deg, #4361ee, #3a0ca3);
+  border-radius: 10px;
   color: white;
-  font-size: 1.2rem;
-  font-weight: 600;
   cursor: pointer;
-  transition: all 0.4s ease;
-  box-shadow: 0 0 25px rgba(67, 97, 238, 0.5);
+  font-weight: 600;
+}
+
+.secondary-btn {
+  padding: 0.9rem 1.5rem;
+  background: transparent;
+  border: 1px solid #4cc9f0;
+  border-radius: 10px;
+  color: #4cc9f0;
+  cursor: pointer;
+}
+
+/* STATS */
+.hero-stats {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.stat h3 {
+  color: #4cc9f0;
+  margin-bottom: 0.3rem;
+}
+
+/* =========================
+   ORBIT SYSTEM (CENTERPIECE)
+========================= */
+
+.orbit-wrapper {
   position: relative;
+  width: 420px;
+  height: 420px;
+  margin: auto;
+}
+
+.star-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, #ffb703, #fb8500);
+  border-radius: 50%;
+  box-shadow: 0 0 40px #ffb703;
+}
+
+/* ORBITS */
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(76, 201, 240, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin linear infinite;
+}
+
+.orbit-1 {
+  width: 140px;
+  height: 140px;
+  animation-duration: 10s;
+}
+
+.orbit-2 {
+  width: 260px;
+  height: 260px;
+  animation-duration: 18s;
+}
+
+.orbit-3 {
+  width: 380px;
+  height: 380px;
+  animation-duration: 28s;
+}
+
+/* PLANETS */
+.planet {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.p1 { background: #4cc9f0; }
+.p2 { background: #7209b7; }
+.p3 { background: #f72585; }
+
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* FEATURES */
+.features {
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* =========================
+   TRUE NEUMORPHIC FEATURE CARDS
+   (SOFT EXTRUDED SURFACE STYLE)
+========================= */
+
+.feature-card {
+  position: relative;
+  padding: 1.8rem;
+  border-radius: 20px;
+
+  /* base surface (key for neumorphism) */
+  background: #0b1020;
+
+  /* remove glass blur */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  /* subtle border blend */
+  border: 1px solid rgba(255, 255, 255, 0.04);
+
+  /* NEUMORPHIC CORE SHADOW */
+  box-shadow:
+    12px 12px 24px rgba(0, 0, 0, 0.55),
+    -10px -10px 22px rgba(255, 255, 255, 0.04);
+
+  color: #d7e3ff;
+  transition: all 0.25s ease;
   overflow: hidden;
 }
 
-.cta-button::before {
-  content: '';
+/* SOFT INNER GLOW (important neumorphic layer) */
+.feature-card::before {
+  content: "";
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
+  inset: 0;
+  border-radius: 20px;
+
+  /* inner highlight + depth illusion */
+  box-shadow:
+    inset 4px 4px 10px rgba(0, 0, 0, 0.6),
+    inset -4px -4px 10px rgba(255, 255, 255, 0.05);
+
+  pointer-events: none;
 }
 
-.cta-button:hover::before {
-  left: 100%;
-}
-
-.cta-button:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 40px rgba(67, 97, 238, 0.8);
-}
-
-.cta-button:active {
-  transform: scale(1.05);
-}
-
-.cta-button:focus-visible {
-  outline: 2px solid #4cc9f0;
-  outline-offset: 2px;
-}
-
-.cta-button.exploring {
-  background: linear-gradient(45deg, #f72585, #7209b7);
-  box-shadow: 0 0 35px rgba(247, 37, 133, 0.6);
-  transform: scale(0.95);
-  cursor: not-allowed;
-}
-
-.cta-button.exploring::before {
-  display: none;
-}
-
-/* ==============================
-   🌒 Footer
-   ============================== */
-.welcome-footer {
-  margin-top: 3rem;
-  font-size: 0.9rem;
-  color: #aaa;
+/* subtle light bloom (NOT neon) */
+.feature-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: radial-gradient(
+    circle at 30% 20%,
+    rgba(255, 255, 255, 0.05),
+    transparent 60%
+  );
   opacity: 0.8;
-  letter-spacing: 0.5px;
+  pointer-events: none;
 }
 
-/* ==============================
-   📱 Responsive Design
-   ============================== */
-@media (max-width: 768px) {
-  .welcome-container {
-    padding: 1rem;
-  }
-  
-  .collision-scene {
-    height: 200px;
-    margin: 2rem auto 1.5rem;
-  }
-  
-  .planet {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .move-right.planet-left {
-    transform: translate(110px, -50%) scale(1.1);
-  }
-  
-  .move-left.planet-right {
-    transform: translate(-110px, -50%) scale(1.1);
-  }
-  
-  .cta-button {
-    padding: 0.875rem 2.5rem;
-    font-size: 1.1rem;
-  }
+/* HOVER = pressed-in neumorphic effect */
+.feature-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    inset 10px 10px 18px rgba(0, 0, 0, 0.65),
+    inset -8px -8px 18px rgba(255, 255, 255, 0.03);
 }
 
-@media (max-width: 480px) {
-  .collision-scene {
-    height: 160px;
-  }
-  
-  .planet {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .move-right.planet-left {
-    transform: translate(80px, -50%) scale(1.1);
-  }
-  
-  .move-left.planet-right {
-    transform: translate(-80px, -50%) scale(1.1);
-  }
-  
-  .welcome-description {
-    margin: 1rem auto 2rem;
-  }
+/* TEXT (so it stays readable in low-contrast neumorphism) */
+.feature-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+  color: rgba(220, 235, 255, 0.95);
 }
 
-/* ==============================
-   🎯 Reduced Motion Support
-   ============================== */
-@media (prefers-reduced-motion: reduce) {
-  .welcome-title,
-  .planet,
-  .big-bang,
-  .particle,
-  .dissolve-text,
-  .formed-text,
-  .cta-button {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  
-  .welcome-title {
-    animation: none;
-  }
+.feature-card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(200, 215, 235, 0.75);
 }
 
+/* OPTIONAL: subtle divider feel */
+.feature-card h3::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  margin-top: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+}
+
+/* FOOTER */
+.welcome-footer {
+  margin-top: 4rem;
+  text-align: center;
+  color: #7b8ca7;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .orbit-wrapper {
+    margin-top: 2rem;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+}

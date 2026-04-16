@@ -1,0 +1,393 @@
+/* ==============================
+   🌌 ExoVision Welcome Page CSS
+   Cinematic Planet Collision + Dissolve Transition
+   ============================== */
+
+.welcome-app {
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile */
+  width: 100%;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+}
+
+#welcome-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ==============================
+   🌠 Container Layout
+   ============================== */
+.welcome-container {
+  text-align: center;
+  max-width: 900px;
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.welcome-header {
+  margin-bottom: 2rem;
+}
+
+.welcome-title {
+  font-size: clamp(2.5rem, 8vw, 4rem); /* Responsive font size */
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #4cc9f0, #f72585, #7209b7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: titleFloat 4s ease-in-out infinite;
+  margin: 0;
+  line-height: 1.2;
+}
+
+@keyframes titleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.welcome-subtitle {
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  color: #cdd6f4;
+  margin-top: 1rem;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+/* ==============================
+   🪐 PLANETS + COLLISION
+   ============================== */
+.collision-scene {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 260px;
+  margin: 3rem auto 2rem;
+  perspective: 800px;
+}
+
+.planet {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 2s ease-in-out;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+  will-change: transform; /* Performance optimization */
+}
+
+.planet-left {
+  left: 0;
+  background: radial-gradient(circle at 30% 30%, #4cc9f0, #4361ee, #3a0ca3);
+}
+
+.planet-right {
+  right: 0;
+  background: radial-gradient(circle at 30% 30%, #f72585, #b5179e, #7209b7);
+}
+
+/* FIXED: Changed from .collide to match JS class names */
+.move-right.planet-left {
+  transform: translate(145px, -50%) scale(1.1);
+}
+
+.move-left.planet-right {
+  transform: translate(-145px, -50%) scale(1.1);
+}
+
+/* ==============================
+   💥 BIG BANG EFFECT
+   ============================== */
+.big-bang {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff, #ffcc00, #ff007f, transparent);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  z-index: 5;
+  animation: bangFlash 1.2s ease-out forwards;
+  box-shadow: 0 0 80px 50px rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+}
+
+@keyframes bangFlash {
+  0% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(3);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(8);
+  }
+}
+
+/* ==============================
+   ✨ PARTICLE EXPLOSION
+   ============================== */
+.particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  opacity: 0.9;
+  animation: particleFly 1.5s ease-out forwards;
+  pointer-events: none;
+  will-change: transform, opacity; /* Performance optimization */
+}
+
+@keyframes particleFly {
+  0% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(
+      calc(-50% + var(--particle-x, 0px)), 
+      calc(-50% + var(--particle-y, 0px))
+    ) scale(0.1);
+    opacity: 0;
+  }
+}
+
+/* ==============================
+   🌈 TEXT DISSOLVE EFFECT
+   ============================== */
+.dissolve-text {
+  animation: dissolve 1.2s ease-out forwards;
+  will-change: opacity, filter, letter-spacing;
+}
+
+@keyframes dissolve {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+    letter-spacing: normal;
+  }
+  50% {
+    opacity: 0.5;
+    filter: blur(6px);
+    letter-spacing: 3px;
+  }
+  100% {
+    opacity: 0;
+    filter: blur(12px);
+    letter-spacing: 6px;
+  }
+}
+
+/* ==============================
+   🆕 NEW: Formed Text Styles (After Explosion)
+   ============================== */
+.formed-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 700;
+  background: linear-gradient(90deg, #4cc9f0, #f72585);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0;
+  animation: textReveal 1.5s ease-out 0.5s forwards;
+  z-index: 6;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes textReveal {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+    filter: blur(10px);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* ==============================
+   🧭 Text + Button Styling
+   ============================== */
+.welcome-description {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  line-height: 1.7;
+  color: #d0d0d0;
+  margin: 1.5rem auto 2.5rem;
+  max-width: 700px;
+  opacity: 0.9;
+}
+
+.cta-button {
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(45deg, #4361ee, #3a0ca3);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 25px rgba(67, 97, 238, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 40px rgba(67, 97, 238, 0.8);
+}
+
+.cta-button:active {
+  transform: scale(1.05);
+}
+
+.cta-button:focus-visible {
+  outline: 2px solid #4cc9f0;
+  outline-offset: 2px;
+}
+
+.cta-button.exploring {
+  background: linear-gradient(45deg, #f72585, #7209b7);
+  box-shadow: 0 0 35px rgba(247, 37, 133, 0.6);
+  transform: scale(0.95);
+  cursor: not-allowed;
+}
+
+.cta-button.exploring::before {
+  display: none;
+}
+
+/* ==============================
+   🌒 Footer
+   ============================== */
+.welcome-footer {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #aaa;
+  opacity: 0.8;
+  letter-spacing: 0.5px;
+}
+
+/* ==============================
+   📱 Responsive Design
+   ============================== */
+@media (max-width: 768px) {
+  .welcome-container {
+    padding: 1rem;
+  }
+  
+  .collision-scene {
+    height: 200px;
+    margin: 2rem auto 1.5rem;
+  }
+  
+  .planet {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .move-right.planet-left {
+    transform: translate(110px, -50%) scale(1.1);
+  }
+  
+  .move-left.planet-right {
+    transform: translate(-110px, -50%) scale(1.1);
+  }
+  
+  .cta-button {
+    padding: 0.875rem 2.5rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .collision-scene {
+    height: 160px;
+  }
+  
+  .planet {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .move-right.planet-left {
+    transform: translate(80px, -50%) scale(1.1);
+  }
+  
+  .move-left.planet-right {
+    transform: translate(-80px, -50%) scale(1.1);
+  }
+  
+  .welcome-description {
+    margin: 1rem auto 2rem;
+  }
+}
+
+/* ==============================
+   🎯 Reduced Motion Support
+   ============================== */
+@media (prefers-reduced-motion: reduce) {
+  .welcome-title,
+  .planet,
+  .big-bang,
+  .particle,
+  .dissolve-text,
+  .formed-text,
+  .cta-button {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .welcome-title {
+    animation: none;
+  }
+}
+

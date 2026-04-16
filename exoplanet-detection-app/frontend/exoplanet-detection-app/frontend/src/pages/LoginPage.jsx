@@ -7,7 +7,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const [isEntering, setIsEntering] = useState(false);
 
-  // Add missing state variables
+  // 🧠 Add missing state variables
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');

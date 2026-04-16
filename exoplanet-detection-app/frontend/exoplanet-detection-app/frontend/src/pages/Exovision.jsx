@@ -219,45 +219,6 @@ const ExoVision = () => {
         {/* Main Content */}
         <main className="exovision-main">
           <Navbar />
-
-          <section className="exovision-page-header" aria-label="ExoVision page header">
-            <h1 className="exovision-title">ExoVision Research Console</h1>
-            <p className="exovision-subtitle">
-              AI-assisted exoplanet discovery, spectral interpretation, and habitability triage.
-            </p>
-          </section>
-
-          <div className="exovision-tabbar" role="tablist" aria-label="ExoVision views">
-            <button
-              type="button"
-              className={`exovision-tab ${activeTab === 'scan' ? 'active' : ''}`}
-              onClick={() => setActiveTab('scan')}
-            >
-              Scan
-            </button>
-            <button
-              type="button"
-              className={`exovision-tab ${activeTab === 'analyze' ? 'active' : ''}`}
-              onClick={() => setActiveTab('analyze')}
-            >
-              Analyze
-            </button>
-            <button
-              type="button"
-              className={`exovision-tab ${activeTab === 'explore' ? 'active' : ''}`}
-              onClick={() => setActiveTab('explore')}
-            >
-              Explore
-            </button>
-            <button
-              type="button"
-              className={`exovision-tab ${activeTab === 'model' ? 'active' : ''}`}
-              onClick={() => setActiveTab('model')}
-            >
-              Model
-            </button>
-          </div>
-
           {/* Scan Tab */}
           {activeTab === 'scan' && (
             <div className="tab-content active">
@@ -268,12 +229,8 @@ const ExoVision = () => {
                     <div className="planet-glow"></div>
                   </div>
                 </div>
-                <button
-                  className="explore-btn"
-                  onClick={handleScan}
-                  disabled={scanning}
-                >
-                  {scanning ? 'SCANNING...' : 'START SCAN'}
+                <button className="explore-btn" onClick={() => setActiveTab('explore')}>
+                  EXPLORE EXOPLANETS
                 </button>
               </div>
             </div>

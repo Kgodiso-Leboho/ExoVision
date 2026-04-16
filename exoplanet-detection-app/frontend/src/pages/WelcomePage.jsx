@@ -1,100 +1,108 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Stars from '../components/stars';
 import './WelcomePage.css';
 
 const WelcomePage = () => {
-  const [isExploring, setIsExploring] = useState(false);
-  const [showBang, setShowBang] = useState(false);
-  const [particles, setParticles] = useState([]);
-  const [showTitle, setShowTitle] = useState(false);
   const navigate = useNavigate();
-
-  const handleExplore = () => {
-    setIsExploring(true);
-
-    // Trigger Big Bang explosion
-    setTimeout(() => {
-      setShowBang(true);
-      generateParticles();
-    }, 1500);
-
-    // Reveal “ExoVision” after explosion
-    setTimeout(() => {
-      setShowTitle(true);
-    }, 3000);
-
-    // Redirect after cinematic animation
-    setTimeout(() => {
-      setIsExploring(false);
-      navigate('/login');
-    }, 5500);
-  };
-
-  const generateParticles = () => {
-    const particleArray = Array.from({ length: 60 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 400 - 200,
-      y: Math.random() * 400 - 200,
-      size: Math.random() * 5 + 2,
-      duration: Math.random() * 2 + 1,
-      color: Math.random() > 0.5 ? '#4cc9f0' : '#f72585',
-    }));
-    setParticles(particleArray);
-  };
 
   return (
     <div className="welcome-app">
       <Stars id="welcome-stars" />
+
       <div className="welcome-container">
-        <header className="welcome-header">
-          <p className="welcome-subtitle">
-            Discover and Identify Exoplanets Across the Universe
-          </p>
 
-          <div className="collision-scene">
-            <div className={`planet planet-left ${isExploring ? 'move-right' : ''}`}></div>
-            <div className={`planet planet-right ${isExploring ? 'move-left' : ''}`}></div>
+        {/* HERO SECTION */}
+        <header className="hero">
 
-            {showBang && <div className="big-bang"></div>}
+          <div className="hero-text">
+            <h1 className="hero-title">
+              Discover <span>Exoplanets</span> with AI Precision
+            </h1>
 
-            {particles.map((p) => (
-              <div
-                key={p.id}
-                className={`particle ${showTitle ? 'form-text' : ''}`}
-                style={{
-                  background: p.color,
-                  width: `${p.size}px`,
-                  height: `${p.size}px`,
-                  animationDuration: `${p.duration}s`,
-                  transform: `translate(-50%, -50%)`,
-                  '--x': `${p.x}px`,
-                  '--y': `${p.y}px`,
-                }}
-              ></div>
-            ))}
+            <p className="hero-subtitle">
+              A modern research platform for detecting, analyzing, and simulating
+              planetary systems using machine learning and astrophysical modeling.
+            </p>
 
-            {showTitle && <div className="formed-text">ExoVision</div>}
+            <div className="hero-actions">
+              <button
+                className="primary-btn"
+                onClick={() => navigate('/login')}
+              >
+                Get Started
+              </button>
+
+              <button
+                className="secondary-btn"
+                onClick={() => navigate('/predict')}
+              >
+                Open Dashboard
+              </button>
+            </div>
+
+            <div className="hero-stats">
+              <div className="stat">
+                <h3>10K+</h3>
+                <p>Exoplanets analyzed</p>
+              </div>
+              <div className="stat">
+                <h3>98%</h3>
+                <p>Model accuracy</p>
+              </div>
+              <div className="stat">
+                <h3>Real-time</h3>
+                <p>Telemetry processing</p>
+              </div>
+            </div>
           </div>
+
+          {/* ORBIT VISUAL */}
+          <div className="orbit-wrapper">
+
+            <div className="star-center" />
+
+            <div className="orbit orbit-1">
+              <div className="planet p1" />
+            </div>
+
+            <div className="orbit orbit-2">
+              <div className="planet p2" />
+            </div>
+
+            <div className="orbit orbit-3">
+              <div className="planet p3" />
+            </div>
+
+          </div>
+
         </header>
 
-        <p className="welcome-description">
-          Embark on an interstellar journey to identify and analyze exoplanets
-          beyond our solar system. Our advanced machine learning algorithms and 
-          cosmic data help you explore distant worlds and uncover the secrets of the universe.
-        </p>
+        {/* FEATURE SECTION */}
+        <section className="features">
 
-        <button
-          className={`cta-button ${isExploring ? 'exploring' : ''}`}
-          onClick={handleExplore}
-          disabled={isExploring}
-        >
-          {isExploring ? 'LAUNCHING...' : 'LogIn'}
-        </button>
+          <div className="feature-card">
+            <h3>AI Prediction Engine</h3>
+            <p>Random Forest + deep learning models for exoplanet classification.</p>
+          </div>
 
+          <div className="feature-card">
+            <h3>Spectral Analysis</h3>
+            <p>Analyze light curves and detect transit anomalies in real time.</p>
+          </div>
+
+          <div className="feature-card">
+            <h3>Mission Control UI</h3>
+            <p>NASA-inspired telemetry dashboard for research workflows.</p>
+          </div>
+
+        </section>
+
+        {/* FOOTER */}
         <footer className="welcome-footer">
-          <p>© 2024 ExoVision | Exploring the universe with AI</p>
+          <p>ExoVision • AI Astronomy Research Platform</p>
         </footer>
+
       </div>
     </div>
   );
