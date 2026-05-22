@@ -12,12 +12,6 @@ const Navbar = () => {
       </div>
       <div className="nav-links">
         <Link 
-          to="/exovision" 
-          className={location.pathname === '/exovision' ? 'nav-link active' : 'nav-link'}
-        >
-          Explore
-        </Link>
-        <Link 
           to="/dataset" 
           className={location.pathname === '/dataset' ? 'nav-link active' : 'nav-link'}
         >
@@ -34,6 +28,12 @@ const Navbar = () => {
           className={location.pathname === '/model-info' ? 'nav-link active' : 'nav-link'}
         >
           Model Info
+        </Link>
+        <Link 
+          to="/exovision" 
+          className={location.pathname === '/exovision' ? 'nav-link active' : 'nav-link'}
+        >
+          Explore
         </Link>
          <Link 
           to="/welcome" 
