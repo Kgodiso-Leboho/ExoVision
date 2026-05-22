@@ -69,7 +69,6 @@ const DatasetPage = () => {
       <Stars />
       <Navbar />
 
-      {/* HEADER */}
       <div className="mc-header">
         <h1>DATASET CONTROL CENTER</h1>
         <div className={`status-badge ${status.toLowerCase()}`}>
@@ -77,10 +76,7 @@ const DatasetPage = () => {
         </div>
       </div>
 
-      {/* GRID */}
       <div className="mc-grid">
-
-        {/* LEFT */}
         <div className="panel command-panel">
           <h2>DATA INPUT MODULE</h2>
 
@@ -101,7 +97,6 @@ const DatasetPage = () => {
           </div>
         </div>
 
-        {/* CENTER */}
         <div className="panel telemetry-panel">
           <h2>PIPELINE TELEMETRY</h2>
 
@@ -118,7 +113,6 @@ const DatasetPage = () => {
           </div>
         </div>
 
-        {/* RIGHT */}
         <div className="panel results-panel">
           <h2>ANALYSIS OUTPUT</h2>
 
