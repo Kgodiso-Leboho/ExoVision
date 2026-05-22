@@ -4,7 +4,6 @@ import './ModelInfoPage.css';
 import Stars from '../components/stars';
 import Navbar from '../components/Navbar';
 
-// --- Static Data for Models with detailed information ---
 const MODEL_DATA = {
   xgboost: {
     name: "XGBoost (Extreme Gradient Boosting)",
@@ -121,7 +120,7 @@ const ModelInfoPage = () => {
 
   return (
     <div className="model-info-page">
-      <Stars id='welcome-stars'/>
+      <Stars />
       
       <div className="model-info-container">
         <Navbar />
@@ -130,7 +129,6 @@ const ModelInfoPage = () => {
           <p>Explore the core models powering exoplanet prediction</p>
         </header>
 
-        {/* Model Selection Tabs */}
         <nav className="model-tabs">
           {Object.keys(MODEL_DATA).map(modelKey => (
             <button
@@ -143,9 +141,7 @@ const ModelInfoPage = () => {
           ))}
         </nav>
 
-        {/* Model Information */}
         <div className="model-content">
-          {/* Model Header with Stats */}
           <div className="model-header">
             <div className="model-title-section">
               <h2>{currentModel.name}</h2>
@@ -167,13 +163,11 @@ const ModelInfoPage = () => {
             </div>
           </div>
 
-          {/* Introduction Section */}
           <section className="info-section">
             <h3>Introduction</h3>
             <p>{currentModel.introduction}</p>
           </section>
 
-          {/* Reasoning Section */}
           <section className="info-section">
             <h3>Why We Chose This Model</h3>
             <p dangerouslySetInnerHTML={{ 
@@ -181,7 +175,6 @@ const ModelInfoPage = () => {
             }} />
           </section>
 
-          {/* Benefits Section */}
           <section className="info-section">
             <h3>Key Benefits</h3>
             <div className="features-grid">
@@ -194,7 +187,6 @@ const ModelInfoPage = () => {
             </div>
           </section>
 
-          {/* Limitations Section */}
           <section className="info-section">
             <h3>Limitations</h3>
             <div className="features-grid">
@@ -207,7 +199,6 @@ const ModelInfoPage = () => {
             </div>
           </section>
 
-          {/* Applications Section */}
           <section className="info-section">
             <h3>Applications & Use Cases</h3>
             <div className="applications-grid">
@@ -221,7 +212,6 @@ const ModelInfoPage = () => {
           </section>
         </div>
 
-        {/* Optional: Display API-fetched model stats if available */}
         {modelStats && (
           <div className="current-model-stats">
             <h3>Live Model Performance</h3>
