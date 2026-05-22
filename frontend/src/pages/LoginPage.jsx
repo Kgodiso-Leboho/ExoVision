@@ -7,12 +7,10 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const [isEntering, setIsEntering] = useState(false);
 
-  // Add missing state variables
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  // Mock user database
   const users = [
     { email: 'astro@sansa.com', password: 'galaxy123' },
     { email: 'pluto@sansa.com', password: 'planet456' }
@@ -25,19 +23,16 @@ const LoginPage = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Check credentials
     const user = users.find(
       (u) => u.email === email && u.password === password
     );
 
     if (user) {
-      console.log('✅ Login successful!');
+      console.log('Login successful!');
       setError('');
 
-      // Optional: save user session in localStorage
       localStorage.setItem('user', JSON.stringify(user));
 
-      // Navigate to ExoVision page
       navigate('/exovision');
     } else {
       setError('❌ Invalid email or password');
@@ -99,7 +94,6 @@ const LoginPage = () => {
               </a>
             </div>
 
-            {/* ✅ Only onSubmit handles the click */}
             <button type="submit" className="login-button">
               Sign In
             </button>
