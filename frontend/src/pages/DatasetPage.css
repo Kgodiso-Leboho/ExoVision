@@ -1,7 +1,3 @@
-/* =========================
-   GLOBAL MISSION CONTROL
-========================= */
-
 .mission-control {
   min-height: 100vh;
   background: radial-gradient(circle at top, #050814, #02030a 60%, #000);
@@ -12,7 +8,6 @@
   z-index: 1;
 }
 
-/* subtle grid overlay */
 .mission-control::before {
   content: "";
   position: absolute;
@@ -23,10 +18,6 @@
   pointer-events: none;
   opacity: 0.4;
 }
-
-/* =========================
-   HEADER
-========================= */
 
 .mc-header {
   display: flex;
@@ -43,7 +34,6 @@
   color: #7dd3fc;
 }
 
-/* STATUS BADGE */
 .status-badge {
   padding: 8px 14px;
   border-radius: 999px;
@@ -70,10 +60,6 @@
   border-color: #22c55e;
 }
 
-/* =========================
-   GRID LAYOUT
-========================= */
-
 .mc-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr 1fr;
@@ -81,10 +67,6 @@
   padding: 20px 40px;
   height: calc(100vh - 140px);
 }
-
-/* =========================
-   PANELS (GLASS HUD)
-========================= */
 
 .panel {
   background: rgba(255, 255, 255, 0.04);
@@ -105,10 +87,6 @@
   border-bottom: 1px solid rgba(255,255,255,0.1);
   padding-bottom: 10px;
 }
-
-/* =========================
-   COMMAND PANEL
-========================= */
 
 .command-panel input[type="file"] {
   width: 100%;
@@ -165,10 +143,6 @@
   color: white;
 }
 
-/* =========================
-   TELEMETRY PANEL
-========================= */
-
 .telemetry-panel {
   overflow-y: auto;
 }
@@ -193,10 +167,6 @@
   color: rgba(255,255,255,0.4);
   font-size: 13px;
 }
-
-/* =========================
-   RESULTS PANEL
-========================= */
 
 .results-grid {
   display: grid;
@@ -227,10 +197,6 @@
   background: rgba(34, 211, 238, 0.08);
 }
 
-/* =========================
-   FOOTER
-========================= */
-
 .mc-footer {
   display: flex;
   justify-content: space-between;
@@ -239,10 +205,6 @@
   color: rgba(255,255,255,0.5);
   border-top: 1px solid rgba(255,255,255,0.1);
 }
-
-/* =========================
-   ANIMATIONS
-========================= */
 
 @keyframes pulse {
   0% { opacity: 1; }
@@ -255,9 +217,6 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 
 @media (max-width: 900px) {
   .mc-grid {
