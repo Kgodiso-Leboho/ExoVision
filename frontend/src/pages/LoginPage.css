@@ -280,7 +280,6 @@
   color: white;
 }
 
-/* Style for select dropdown */
 .form-group select {
   width: 100%;
   padding: 1rem;
@@ -400,7 +399,6 @@
   z-index: 0;
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
   .login-container {
     padding: 1rem;
