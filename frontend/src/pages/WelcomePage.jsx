@@ -11,8 +11,6 @@ const WelcomePage = () => {
       <Stars />
 
       <div className="welcome-container">
-
-        {/* HERO SECTION */}
         <header className="hero">
 
           <div className="hero-text">
@@ -47,7 +45,7 @@ const WelcomePage = () => {
                 <p>Exoplanets analyzed</p>
               </div>
               <div className="stat">
-                <h3>98%</h3>
+                <h3>85%</h3>
                 <p>Model accuracy</p>
               </div>
               <div className="stat">
@@ -57,7 +55,6 @@ const WelcomePage = () => {
             </div>
           </div>
 
-          {/* ORBIT VISUAL */}
           <div className="orbit-wrapper">
 
             <div className="star-center" />
@@ -78,7 +75,6 @@ const WelcomePage = () => {
 
         </header>
 
-        {/* FEATURE SECTION */}
         <section className="features">
 
           <div className="feature-card">
@@ -98,7 +94,6 @@ const WelcomePage = () => {
 
         </section>
 
-        {/* FOOTER */}
         <footer className="welcome-footer">
           <p>ExoVision • AI Astronomy Research Platform</p>
         </footer>
