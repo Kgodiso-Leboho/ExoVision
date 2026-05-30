@@ -1,4 +1,4 @@
-# ExoVision — AI-Powered Exoplanet Identification App
+# ExoVision : AI-Powered Exoplanet Identification App
 
 *Exploring distant worlds through data, AI, and curiosity.*
 
