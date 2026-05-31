@@ -1,7 +1,16 @@
 import uvicorn
 from fastapi import FastAPI
+from app.routers.auth import authRouter
+from contextlib import asynccontextmanager
+from app.util.init_db import create_tables
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    create_tables()
+    yield
+
+app = FastAPI(lifespan=lifespan)
+app.include_router(router=authRouter, tags=["auth"], prefix="/api")
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
