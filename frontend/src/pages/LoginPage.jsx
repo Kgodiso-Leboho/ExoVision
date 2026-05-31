@@ -37,7 +37,6 @@ const LoginPage = () => {
         return;
       }
 
-      // Save token and user to localStorage
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
 
