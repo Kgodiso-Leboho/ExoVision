@@ -2,6 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routers.auth import authRouter
+from app.routers.dataset import datasetRouter
 from contextlib import asynccontextmanager
 from app.util.init_db import create_tables
 
@@ -12,6 +13,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 app.include_router(router=authRouter, tags=["auth"], prefix="/api")
+app.include_router(router=datasetRouter, tags=["dataset"], prefix="/api")
 
 app.add_middleware(
     CORSMiddleware,
