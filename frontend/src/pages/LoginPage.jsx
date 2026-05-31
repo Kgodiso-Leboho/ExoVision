@@ -10,32 +10,42 @@ const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
-  const users = [
-    { email: 'astro@sansa.com', password: 'galaxy123' },
-    { email: 'pluto@sansa.com', password: 'planet456' }
-  ];
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setIsEntering(true);
   }, []);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setError('');
+    setLoading(true);
 
-    const user = users.find(
-      (u) => u.email === email && u.password === password
-    );
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-    if (user) {
-      console.log('Login successful!');
-      setError('');
+      const data = await response.json();
 
-      localStorage.setItem('user', JSON.stringify(user));
+      if (!response.ok) {
+        setError(`❌ ${data.detail || 'Invalid email or password'}`);
+        return;
+      }
+
+      // Save token and user to localStorage
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
 
       navigate('/exovision');
-    } else {
-      setError('❌ Invalid email or password');
+    } catch (err) {
+      setError('❌ Could not connect to server. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -51,7 +61,7 @@ const LoginPage = () => {
           <button className="back-button" onClick={handleBack}>
             ← Back to Home
           </button>
-          
+
           <div className="login-header">
             <h1>Welcome Back</h1>
             <p>Sign in to your ExoVision account</p>
@@ -94,8 +104,8 @@ const LoginPage = () => {
               </a>
             </div>
 
-            <button type="submit" className="login-button">
-              Sign In
+            <button type="submit" className="login-button" disabled={loading}>
+              {loading ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
         </div>
