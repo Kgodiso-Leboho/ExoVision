@@ -106,6 +106,15 @@ const LoginPage = () => {
             <button type="submit" className="login-button" disabled={loading}>
               {loading ? 'Signing in...' : 'Sign In'}
             </button>
+
+            <div className="auth-switch">
+            <p>
+              Don't have an account?
+              <button className="switch-mode-btn" onClick={() => navigate('/register')}>
+                Create Account
+              </button>
+            </p>
+          </div>
           </form>
         </div>
       </div>
