@@ -146,3 +146,73 @@
   font-weight: bold;
   letter-spacing: 1px;
 }
+
+.result-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin: -25px -25px 20px -25px;
+}
+
+.result-label {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.is-planet .result-header { background: rgba(52, 211, 153, 0.1); }
+.is-planet .result-label { color: #34d399; }
+.is-planet h2 { color: #34d399; }
+
+.is-fp .result-header { background: rgba(251, 113, 133, 0.1); }
+.is-fp .result-label { color: #fb7185; }
+.is-fp h2 { color: #fb7185; }
+
+.breakdown-label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #64748b;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+
+.model-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.model-name {
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.model-label {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 6px;
+}
+
+.model-label.positive { background: rgba(52, 211, 153, 0.1); color: #34d399; }
+.model-label.negative { background: rgba(251, 113, 133, 0.1); color: #fb7185; }
+
+.vote-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.vote-positive { color: #34d399; font-weight: 500; }
+.vote-negative { color: #fb7185; font-weight: 500; }
