@@ -27,7 +27,7 @@ Built with React for the frontend and Python for the backend, ExoVision bridges 
 
 1. **Data Upload** – Users upload astronomical datasets or use provided samples.  
 2. **Preprocessing** – The application cleans and normalizes data.  
-3. **Prediction** – Machine learning models (CNN or LSTM) classify possible exoplanets.  
+3. **Prediction** – Machine learning models classify possible exoplanets.  
 4. **Visualization** – The results are displayed with graphs and metrics.  
 5. **Habitability Assessment** – The app estimates whether detected planets could support life.
 
